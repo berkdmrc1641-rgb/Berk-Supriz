@@ -1,0 +1,274 @@
+/* GENEL */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Kalp yağmuru */
+.heart, .heart-login {
+    position: fixed;
+    bottom: -20px;
+    font-size: 30px;
+    color: rgba(255,255,255,0.9);
+    pointer-events: none;
+}
+
+.heart { animation: hearts 6s linear infinite; }
+.heart-login { animation: heartsLogin 6s linear infinite; }
+
+@keyframes hearts {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+}
+
+@keyframes heartsLogin {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+}
+
+/* Fade-out (index çıkışı) */
+.fade-out {
+    animation: fadeOut 0.8s forwards;
+}
+@keyframes fadeOut {
+    to { opacity: 0; filter: blur(10px); }
+}
+
+/* Flash background (letter) */
+.flash-bg {
+    animation: flashBG 0.6s forwards;
+}
+@keyframes flashBG {
+    0% { background: white; }
+    100% { background: radial-gradient(circle at bottom, #ffd6e8, #ee9ca7); }
+}
+
+/* Parıltı (giriş kutusu) */
+.sparkle {
+    animation: sparkleAnim 2s infinite alternate;
+}
+@keyframes sparkleAnim {
+    from { box-shadow: 0 0 20px rgba(255,150,200,0.5); }
+    to { box-shadow: 0 0 40px rgba(255,0,100,0.8); }
+}
+
+/* Işık patlaması (kartlar, polaroid) */
+.shine {
+    animation: shineAnim 3s infinite;
+}
+@keyframes shineAnim {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.4); }
+    100% { filter: brightness(1); }
+}
+
+/* INDEX */
+.login-body {
+    background: radial-gradient(circle at top, #ffd6e8, #ee9ca7);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bgGlow 6s infinite alternate;
+}
+
+@keyframes bgGlow {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.3); }
+}
+
+.login-box {
+    background: rgba(255,255,255,0.85);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: loginZoom 1.5s ease;
+}
+
+@keyframes loginZoom {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.login-box input {
+    width: 80%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 15px rgba(255,50,100,0.5);
+}
+
+.login-box button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: #ff7f9f;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background: #ff5c85;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255,0,80,0.8);
+}
+
+/* LETTER */
+.letter-body {
+    background: radial-gradient(circle at bottom, #ffd6e8, #ee9ca7);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope {
+    width: 200px;
+    height: 120px;
+    cursor: pointer;
+    animation: envelopePop 1.5s ease;
+    transform-style: preserve-3d;
+}
+
+@keyframes envelopePop {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.open-envelope {
+    animation: openEnv 1s forwards;
+    transform-origin: top;
+}
+
+@keyframes openEnv {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(180deg); }
+}
+
+.envelope .top {
+    width: 100%;
+    height: 60px;
+    background: #ffb6c1;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.envelope .bottom {
+    width: 100%;
+    height: 60px;
+    background: #ff7f9f;
+}
+
+.letter-text {
+    margin-top: 20px;
+    font-size: 26px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255,255,255,0.9);
+    z-index: 10;
+}
+
+/* CINEMA */
+.cinema-body {
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    min-height: 100vh;
+    padding-top: 40px;
+}
+
+.cinema-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cinema-card {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    animation: zoomFade 8.2s ease-in-out;
+}
+
+.cinema-card img {
+    width: 300px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.cinema-card p {
+    font-size: 22px;
+    color: #444;
+    text-align: center;
+    max-width: 400px;
+}
+
+/* 8 sn net görünme + 0.2 sn kaybolma */
+@keyframes zoomFade {
+    0% { transform: scale(0.9); opacity: 0; }
+    5% { transform: scale(1); opacity: 1; }
+    95% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+/* FINAL */
+.final-list {
+    display: none;
+    background: rgba(255,255,255,0.85);
+    padding: 30px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 20px;
+    animation: finalFade 2s ease forwards;
+}
+
+@keyframes finalFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.final-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.polaroid-final {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.polaroid-final img {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.final-msg {
+    font-size: 20px;
+    color: #444;
+    max-width: 400px;
+}
+
+.love-anim {
+    text-align: center;
+    font-size: 40px;
+    color: #ff4d6d;
+    animation: lovePulse 2s infinite alternate;
+}
+
+@keyframes lovePulse {
+    from { transform: scale(1); opacity: 0.7; }
+    to { transform: scale(1.2); opacity: 1; }
+}

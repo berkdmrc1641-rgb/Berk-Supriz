@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Anılarımız</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cinema-body">
+<iframe src="musicplayer.html" style="display:none;"></iframe>
+
+<audio id="bgm"></audio>
+
+
+<div class="cinema-container">
+
+    <div class="cinema-card shine"><img src="images/foto1.jpg"><p>En çok kızdığın ama herşeyin bi nebze başladığı çicek </p></div>
+    <div class="cinema-card shine"><img src="images/foto2.jpg"><p>Sarı lale elbet bir gün yeri dolucak inanıyorum</p></div>
+    <div class="cinema-card shine"><img src="images/foto3.jpg"><p>Fotoğrafımız yok demiştik tam yaparken azarlamıştın</p></div>
+    <div class="cinema-card shine"><img src="images/foto4.jpg"><p>Yeşil Sana Çok Yakışıyo</p></div>
+    <div class="cinema-card shine"><img src="images/foto5.jpg"><p>Şuranın Yarısı Yok La</p></div>
+    <div class="cinema-card shine"><img src="images/foto6.jpg"><p>Çicek Defteri</p></div>
+    <div class="cinema-card shine"><img src="images/foto7.jpg"><p>İlk Aldığım Buket</p></div>
+    <div class="cinema-card shine"><img src="images/foto8.jpg"><p>Ölmeden Önce Son Fotoğrafı</p></div>
+    <div class="cinema-card shine"><img src="images/foto9.jpg"><p>Ne güzel uğraşmıştım la bunla da</p></div>
+    <div class="cinema-card shine"><img src="images/foto10.jpg"><p>Sana Tek Zararım</p></div>
+    <div class="cinema-card shine"><img src="images/foto11.jpg"><p>Hayatımın Sanırım En Güzel 5 Dakikasıydı</p></div>
+    <div class="cinema-card shine"><img src="images/foto12.jpg"><p>Aldım diye çok kızdığın ama nadide parçalardan</p></div>
+    <div class="cinema-card shine"><img src="images/foto13.jpg"><p>Araba o günden sonra dayanamadı la yokluğuna</p></div>
+
+
+</div>
+
+<div id="final-list" class="final-list">
+    <h2>Tüm Anılarımız 💌</h2>
+    <div id="final-items"></div>
+    <h1 class="love-anim">Seni Seviyorum 💗</h1>
+</div>
+
+<script>
+// KALP YAĞMURU
+for (let i = 0; i < 30; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(h);
+}
+
+// PLAYLIST: sarki1–4
+const playlist = [
+    "music/sarki1.mp3",
+    "music/sarki2.mp3",
+    "music/sarki3.mp3",
+    "music/sarki4.mp3"
+];
+
+const audio = document.getElementById("bgm");
+let currentTrack = 0;
+
+// Başlat + fade-in
+function startMusic() {
+    audio.src = playlist[currentTrack];
+    audio.volume = 0;
+    audio.play();
+    let vol = 0;
+    let fade = setInterval(() => {
+        if (vol < 0.5) {
+            vol += 0.01;
+            audio.volume = vol;
+        } else {
+            clearInterval(fade);
+        }
+    }, 100);
+}
+
+// Şarkı bitince sıradaki
+audio.addEventListener("ended", () => {
+    currentTrack++;
+    if (currentTrack >= playlist.length) currentTrack = 0;
+    audio.src = playlist[currentTrack];
+    audio.play();
+});
+
+// Slideshow
+let index = 0;
+const cards = document.querySelectorAll(".cinema-card");
+const finalList = document.getElementById("final-list");
+const finalItems = document.getElementById("final-items");
+
+function showCard() {
+    cards.forEach(c => c.style.display = "none");
+    cards[index].style.display = "flex";
+
+    index++;
+
+    if (index < cards.length) {
+        setTimeout(showCard, 8200); // 8 sn görünme + 0.2 sn kaybolma
+    } else {
+        setTimeout(showFinal, 8200);
+    }
+}
+
+function showFinal() {
+    cards.forEach(card => {
+        const imgSrc = card.querySelector("img").src;
+        const msgText = card.querySelector("p").innerText;
+
+        const item = document.createElement("div");
+        item.className = "final-item shine";
+
+        item.innerHTML = `
+            <div class="polaroid-final">
+                <img src="${imgSrc}">
+            </div>
+            <p class="final-msg">${msgText}</p>
+        `;
+
+        finalItems.appendChild(item);
+    });
+
+    finalList.style.display = "block";
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+// BAŞLAT
+startMusic();
+showCard();
+</script>
+
+</body>
+</html>

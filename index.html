@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+<iframe src="musicplayer.html" style="display:none;"></iframe>
+
+<div class="login-box sparkle">
+
+    <h2>Bizim Dünyamız 💗</h2>
+    <input id="pass" type="password" placeholder="Şifreyi gir">
+    <button onclick="login()">Giriş Yap</button>
+    <p id="err"></p>
+</div>
+
+<script>
+function login() {
+    const p = document.getElementById("pass").value;
+    if (p === "2728") {
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+            window.location.href = "letter.html";
+        }, 900);
+    } else {
+        document.getElementById("err").innerText = "Yanlış şifre";
+    }
+}
+
+// Kalp yağmuru
+for (let i = 0; i < 50; i++) {
+    let h = document.createElement("div");
+    h.className = "heart-login";
+    h.innerHTML = "❤";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>

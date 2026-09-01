@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mektubun Var</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="letter-body">
+<iframe src="musicplayer.html" style="display:none;"></iframe>
+
+<div class="envelope glow" onclick="openLetter()">
+
+    <div class="top"></div>
+    <div class="bottom"></div>
+</div>
+
+<h2 class="letter-text">Berk’ten bir mektubun var 💌</h2>
+
+<script>
+function openLetter() {
+    document.querySelector(".envelope").classList.add("open-envelope");
+    document.querySelector(".letter-body").classList.add("flash-bg");
+
+    setTimeout(() => {
+        window.location.href = "cinema.html";
+    }, 1200);
+}
+
+// Kalp yağmuru
+for (let i = 0; i < 40; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>

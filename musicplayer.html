@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body style="margin:0; padding:0; overflow:hidden;">
+
+<audio id="bgm" autoplay loop>
+    <source src="music/sarki1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Playlist
+const playlist = [
+    "music/sarki1.mp3",
+    "music/sarki2.mp3",
+    "music/sarki3.mp3",
+    "music/sarki4.mp3"
+];
+
+let current = 0;
+const audio = document.getElementById("bgm");
+
+// Fade-in
+audio.volume = 0;
+audio.play();
+let vol = 0;
+let fade = setInterval(() => {
+    if (vol < 0.5) {
+        vol += 0.01;
+        audio.volume = vol;
+    } else clearInterval(fade);
+}, 100);
+
+// Şarkı bitince sıradaki
+audio.addEventListener("ended", () => {
+    current++;
+    if (current >= playlist.length) current = 0;
+    audio.src = playlist[current];
+    audio.play();
+});
+</script>
+
+</body>
+</html>
