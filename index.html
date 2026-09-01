@@ -7,8 +7,10 @@
 
 <body class="login-body">
 
-<!-- MÜZİK İFRAME -->
-<iframe id="musicframe" src="musicplayer.html" style="display:none;"></iframe>
+<!-- 🔥 MÜZİK ARTIK BURADA -->
+<audio id="bgm" autoplay loop muted>
+    <source src="music/sarki1.mp3" type="audio/mpeg">
+</audio>
 
 <div class="login-box">
     <h2>Hoş Geldin 💗</h2>
@@ -18,22 +20,18 @@
 </div>
 
 <script>
-// 🔥 MOBİLDE MÜZİĞİ AÇAN ANA KOD
+// 🔥 Mobilde müziği açan ana kod
 document.addEventListener("touchstart", () => {
-    const frame = document.getElementById("musicframe");
-    const audio = frame.contentWindow.document.getElementById("bgm");
-
+    const audio = document.getElementById("bgm");
     audio.muted = false;
     audio.play().catch(()=>{});
 }, { once:true });
 
-// 🔥 GİRİŞTE DE MÜZİĞİ AÇ (EK GARANTİ)
+// 🔥 Girişte de müziği aç (ek garanti)
 function login() {
     const p = document.getElementById("pass").value;
 
-    const frame = document.getElementById("musicframe");
-    const audio = frame.contentWindow.document.getElementById("bgm");
-
+    const audio = document.getElementById("bgm");
     audio.muted = false;
     audio.play().catch(()=>{});
 
