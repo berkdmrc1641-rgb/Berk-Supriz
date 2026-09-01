@@ -46,20 +46,23 @@ function login() {
     <source src="music/sarki1.mp3" type="audio/mpeg">
 </audio>
 
-<script>
-const audio = document.getElementById("bgm");
+<audio id="bgm" autoplay loop muted playsinline>
+    <source src="music/sarki1.mp3" type="audio/mpeg">
+</audio>
 
-// 🔥 Mobilde dokununca müziği aç
+<script>
 document.addEventListener("touchstart", () => {
-    audio.muted = false;
-    audio.play().catch(()=>{});
+    const a = document.getElementById("bgm");
+    a.muted = false;
+    a.play().catch(()=>{});
 }, { once:true });
 
-// 🔥 Giriş butonuna basınca da müziği aç (ek garanti)
 function login() {
     const p = document.getElementById("pass").value;
-    audio.muted = false;
-    audio.play().catch(()=>{});
+
+    const a = document.getElementById("bgm");
+    a.muted = false;
+    a.play().catch(()=>{});
 
     if (p === "2728") {
         window.location.href = "letter.html";
@@ -68,6 +71,7 @@ function login() {
     }
 }
 </script>
+
 
 </body>
 </html>
