@@ -38,6 +38,27 @@ document.addEventListener("touchstart", () => {
     a.play().catch(()=>{});
 }, { once:true });
 </script>
+<script>
+const audio = document.getElementById("bgm");
+audio.muted = true; // ilk açılışta sessiz
+
+// playlist
+const playlist = [
+    "music/sarki1.mp3",
+    "music/sarki2.mp3",
+    "music/sarki3.mp3",
+    "music/sarki4.mp3"
+];
+
+let current = 0;
+
+audio.addEventListener("ended", () => {
+    current++;
+    if (current >= playlist.length) current = 0;
+    audio.src = playlist[current];
+    audio.play().catch(()=>{});
+});
+</script>
 
 </body>
 </html>
