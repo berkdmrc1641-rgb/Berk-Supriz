@@ -31,6 +31,13 @@ audio.addEventListener("ended", () => {
     audio.play();
 });
 </script>
+<script>
+document.addEventListener("touchstart", () => {
+    const a = document.getElementById("bgm");
+    a.muted = false;
+    a.play().catch(()=>{});
+}, { once:true });
+</script>
 
 </body>
 </html>
