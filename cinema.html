@@ -69,6 +69,17 @@ function showFinal() {
 
 showCard();
 </script>
+<audio id="bgm" autoplay loop muted playsinline>
+    <source src="music/sarki1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("touchstart", () => {
+    const a = document.getElementById("bgm");
+    a.muted = false;
+    a.play().catch(()=>{});
+}, { once:true });
+</script>
 
 </body>
 </html>
